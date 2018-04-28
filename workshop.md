@@ -141,6 +141,17 @@ easily download and use your changes.
 
 # How do I make use of git?
 
+_A note for mac users_: While Macs do have bash by default they don't
+ship ship with git, so you may need to install it. If you already have
+XCode installed you needn't do anything more here.  XCode includes git
+by default.  If you don't have XCode and would like to have git, download
+git-osx-installer from
+[SourceForge](https://sourceforge.net/projects/git-osx-installer/files/).
+If you follow the SourceForge link, you should be presented with a list
+of various versions of git-osx-installer. Most likely you'll want the
+latest one ("git-2.16.3-intel-universal-mavericks.dmg"), but this may
+depend on your operating system version.
+
 The most common git operation that every self-respecting software developer
 should know how to do is a clone. This downloads a copy of someone else's repo
 to your computer. The repo includes not only all of their code the entire
@@ -230,5 +241,56 @@ however, it's usually better to be a little bit more descriptive.
 
 Are we done yet? Not quite. Running `git status` again gives us:
 
-Once we've committed, we can share our
-changes with other 
+	On branch master
+	Your branch is ahead of 'remotes/origin/master' by 1 commit.
+	  (use "git push" to publish your local commits)
+	  nothing to commit, working tree clean
+
+Once we've committed, we can share our changes with other people by
+pushing them back to the repository that we originally cloned so that
+other people can see and use them.
+
+`$ git push`
+
+Now very likely, when you do this, you'll be presented with an error
+message that looks something like this:
+
+	To git://cs.foothillstemclubs.org/git-bash-workshop.git
+	 ! [rejected]        master -> master (fetch first)
+	error: failed to push some refs to 'git://cs.foothillstemclubs.org/git-bash-workshop.git'
+	hint: Updates were rejected because the remote contains work that you do
+	hint: not have locally. This is usually caused by another repository pushing
+	hint: to the same ref. You may want to first integrate the remote changes
+	hint: (e.g., 'git pull ...') before pushing again.
+	hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+What this means is that someone else in the workshop has pushed to the
+server before you, and that you have to download their changes and
+reconcile them with your own before you can push. To do this, you need
+to pull down their changes and merge them into yours, like this:
+
+`$ git pull`
+
+After you execute this, git will open up a text editor with a message in
+it: `Merge branch 'master' of
+git://cs.foothillstemclubs.org/git-bash-workshop` This is git's way of
+annotating a *merge commit*, which is a special kind of commit message
+that is generated when git merges two diverging revision histories.
+Merges can get quite complicated, but for now it is sufficient to save
+the commit message, and exit the text editor.
+
+After the you're done pulling, try to push again with `git push`. If you
+get lucky (and you're the first person to pull and push), you'll see
+something like:
+
+	Counting objects: 5, done.
+	Delta compression using up to 4 threads.
+	Compressing objects: 100% (5/5), done.
+	Writing objects: 100% (5/5), 1.22 KiB | 0 bytes/s, done.
+	Total 5 (delta 3), reused 0 (delta 0)
+	To git://cs.foothillstemclubs.org/git-bash-workshop.git
+	   9996818..07383ac  master -> master
+
+And you're done! You've successfully contributed to the workshop's repo!
+If your push gets rejected again, try pulling (and then pushing) until
+you're successful. You will get there! Don't give up.
