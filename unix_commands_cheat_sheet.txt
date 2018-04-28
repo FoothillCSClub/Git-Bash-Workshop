@@ -1,0 +1,50 @@
+
+This is a workshop on the basics of Unix command-line usage.
+
+Some useful commands:
+(Things in '<' and '>' represent things to be filled in by the reader.)
+
+	ls			- List files and directories
+		ls
+			list files in current directory
+		ls <files>
+			show <files>
+		ls <directories>
+			list the contents of <directories>
+	cd			- Change working directory
+		cd
+			go to your home directory (~)
+		cd <directory>
+			go to <directory>
+	cp			- Copy files and directories
+		cp <file1> <file2>
+			copy <file1> to <file2>
+		cp <files> <directory>
+			copy <files> to <directory>
+	mv			- Move/Rename files and directories
+		mv <file1/directory1> <file2/directory2>
+			rename (move) <file1/directory1> to <file2/directory2> 
+	curl			- Download files
+		curl <URL>
+			download <URL> to a file in the current directory
+		curl -o <file> <URL>
+			download <URL> to <file>
+	mkdir			- Create directories
+		mkdir <directory>
+			create empty <directory>
+	touch			- Create/Update files
+		touch <file>
+			create <file> if it doesn't exist.
+			if it does, update the file modification timestamp
+			to be the current time.
+	man			- Read the bloody manual!
+		man <command>
+			Brings up the user's manual for <command>
+	cat			- Display/Concatenate files
+		cat <files>
+			print the contents of each file in <files> to the
+			screen, on after another, thus concatenating them.
+	nano			- Edit a text file
+		nano <file>
+			edit <file> with keyboard commands.
+			useful for editing program source code.
