@@ -146,7 +146,7 @@ should know how to do is a clone. This downloads a copy of someone else's repo
 to your computer. The repo includes not only all of their code the entire
 change history of the code. For example,
 
-`$ git clone git://cs.foothillstemclubs.org/srv/git/git-bash-workshop.git`
+`$ git clone git://cs.foothillstemclubs.org/git-bash-workshop.git`
 
 will download a copy of the Markdown code I used to write this workshop.
 By default, the repo will be placed in a directory called `git-bash-workshop`,
@@ -187,7 +187,17 @@ After saving your file, run this command:
 
 Which should give you output something like this:
 
+	On branch master
+	Untracked files:
+	  (use "git add <file>..." to include in what will be committed)
 
+		<yourname>-hello.<file extension>
+
+	nothing added to commit but untracked files present (use "git add" to track)
+
+In plain language, this means that you've made changes to the repository
+that are not recorded as part of the repo's history (and are not visible
+to other people working on the repo).
 
 The next step is to *commit* your new program to the repository so that
 it becomes part of the shared history of the repo, so that the rest of
@@ -197,4 +207,28 @@ changes that are staged to be committed.
 
 `$ git add <yourname>-hello.<extension>`
 
+Now let's run `git status` again to see what's changed:
 
+	On branch master
+	Changes to be committed:
+	  (use "git reset HEAD <file>..." to unstage)
+
+		new file:   <yourname>-hello.<extension>
+
+This means that your changes are now ready to be committed. Committing
+will make your changes part of the history of the repo, and also allows
+you to record a description of what your changes are and *why* you made
+them. This is called a commit message, and it's very useful for people
+going back to try and find bugs later on, so it's good to make commit
+messages descriptive. So for example;
+
+`$ git commit -m "Introduce myself (<yourname>) with code"`
+
+briefly describes what you've done, and is probably sufficiently
+detailed for a simple change like this. For more complex changes,
+however, it's usually better to be a little bit more descriptive.
+
+Are we done yet? Not quite. Running `git status` again gives us:
+
+Once we've committed, we can share our
+changes with other 
